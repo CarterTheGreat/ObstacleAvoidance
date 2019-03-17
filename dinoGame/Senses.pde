@@ -1,6 +1,6 @@
 class Senses{
   
-  public Object getNextObj(){
+  private Object getNextObj(){
    int objX = 640;
    int objXLast = 0;
    if(objects.size() > 0){
@@ -29,6 +29,10 @@ class Senses{
   
   public int getObjY(){
     return getNextObj().y;
+  }
+  
+  public int getObjW(){
+    return getNextObj().w;
   }
   
   public int getObjH(){

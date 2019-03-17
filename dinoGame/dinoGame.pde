@@ -23,7 +23,7 @@ int score = 0;
 void setup(){
   
   frameRate(fps);
-  size(640, 640);
+  size(640, 640); 
   imageMode(CENTER);
   clear();
 } 
