@@ -89,7 +89,6 @@ class Player extends Object{
       player.h = 30;
       jumping = false;
       ducking = false;
-      clear();
     }  
      
     cooldown--;

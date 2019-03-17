@@ -9,4 +9,12 @@ void keyPressed() {
   if(keyCode == TAB){
     restart();
   }
+  
+  if(keyCode == RIGHT){
+    dinoGame.paused = !dinoGame.paused;
+  }
+  
+  if(keyCode == LEFT){
+    dinoGame.botPlaying = !dinoGame.botPlaying;
+  }
 }
