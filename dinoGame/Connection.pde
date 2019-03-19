@@ -1,4 +1,4 @@
-class Connection{{
+class Connection{
   Node fromNode;
   Node toNode;
   float weight;

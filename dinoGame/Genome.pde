@@ -18,7 +18,7 @@ class Genome{
       nodes.get(i).layer = 0;
       nextNode++;
     }
-    for(int i = 0; i < ouputs; i++){
+    for(int i = 0; i < outputs; i++){
       nodes.add(new Node(i + inputs));
       nodes.get(i+inputs).layer = 1;
       nextNode++;
@@ -45,11 +45,11 @@ class Genome{
       nodes.get(i).outputConnections.clear(); 
     }
     for(int i = 0; i < genes.size(); i++){
-      genes.get(i).fromNode.ouputConnecitons.add(genes.get(i)); 
+      genes.get(i).fromNode.outputConnecitons.add(genes.get(i)); 
     }
   }
 //------------------------------------------------------------------------------------------------------------------------------  
-  float feedForward(float[] inputValues){
+  float[] feedForward(float[] inputValues){
     
     //set outputs of input nodes
      for(int i = 0; i < inputs; i++){
@@ -76,7 +76,32 @@ class Genome{
      return outs;
   }
 //------------------------------------------------------------------------------------------------------------------------------  
-
-
+  void generateNetwork(){
+    connectNodes();
+    network = new ArrayList<Node>();
+    //add each node to each layer - no connections in the same layer
+    
+    for(int i = 0; i < layers; i++){//for each layer
+      for(int j = 0; j < nodes.size(); j++){//for each node
+        if(nodes.get(j).layer == 1)//if node is in that layer
+          network.add(nodes.get(j));
+      }
+    }
+  }
+//------------------------------------------------------------------------------------------------------------------------------  
+  void addNode(ArrayList<ConnectionHistory> innovationHistory){
+    if(genes.size() == 0){
+      addConnection(innovationHistory);
+      return;
+    }
+    int randomConnection = floor(random(genes.size()));
+    
+    while(genes.get(randomConnection).fromNode == nodes.get(biasNode) && genes.size() != 1){ //dont disconnect bias
+      randomConnection = floor(random(genes.size()));
+    }
+    
+    //MORE TO WRITE HERE
+    
+  }
   
 }
